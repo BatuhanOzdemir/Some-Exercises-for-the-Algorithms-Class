@@ -1,8 +1,6 @@
 package blatt03;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
 
 public class BubbleSortSuche {
 	
@@ -30,15 +28,61 @@ public class BubbleSortSuche {
 		return sec;
 		
 	}
+	
+	public static int[] generateArray(int size) {
+		int[] arr = new int[size];
+		BubbleSort.initArray(arr);
+		return arr;
+	}
 
 	
-	public static void ternary(int l,int r,double key,LinkedHashMap<Integer,Double> list) {
+	public static boolean between(double key,double min,double max) {
+		return(key >= min && key <= max);
+	}
+	
+	public static void ternary(int l,int r,double key) {
 		
 		
 		int mid1 = l+(r-l)/3;
 		int mid2 = r-(r-l)/3;
+		double dif = 0.1;
 		
-		// to be continued
+		System.out.println("Sizes:"+l+", "+mid1+", "+mid2+", "+r);
+		
+		//calculation of the times
+		
+		int [] arrMid1 = generateArray(mid1);
+		int [] arrMid2 = generateArray(mid2);
+		int [] arrLeft = generateArray(l);
+		int [] arrRight = generateArray(r);
+		
+		double secLeft = bubbleSort(arrLeft);
+		double secRight = bubbleSort(arrRight);
+		double secMid1 = bubbleSort(arrMid1);
+		double secMid2 = bubbleSort(arrMid2);
+		
+		// now comes the ternary part
+		if(between(key,secMid1-dif,secMid1+dif)) {
+			System.out.println("Size:"+mid1+", Time:"+secMid1);
+		}else if(between(key,secMid2-dif,secMid2+dif)) {
+			System.out.println("Size:"+mid1+", Time:"+secMid1);
+		}
+		else if(between(key,secLeft-dif,secLeft+dif)) {
+			System.out.println("Size:"+l+", Time:"+secLeft);
+		}
+		else if(between(key,secRight-dif,secRight+dif)) {
+			System.out.println("Size:"+r+", Time:"+secRight);
+		}
+		
+		else if(key < secMid1) {
+			ternary(l,mid1,key);
+		}else  if(key > secMid1 && key < secMid2) {
+			ternary(mid1,mid2,key);
+		}
+		else if(key > secMid2) {
+			ternary(mid2,r,key);
+		}
+		
 	
 	}
 	
@@ -70,7 +114,7 @@ public class BubbleSortSuche {
 		
 		int [] array = new int[size];
 		
-		BubbleSort.rand(array);
+		BubbleSort.initArray(array);
 
 	    sec = bubbleSort(array);
 		
@@ -85,24 +129,15 @@ public class BubbleSortSuche {
 		
 		int size1 = size / 2;
 		int size2 = size1 / 2;
+	
+	    //int arrSize = size1 - size2;
 		
-		System.out.println(size1+" "+size2);
-		
-		Map<Integer,Double> seconds = new LinkedHashMap<Integer,Double>();
-		
-		for(int i = size2; i <= size1; i = i+1000) {
-			
-			int[] arr = new int[i];
-			BubbleSort.rand(arr);
-			seconds.put(i,bubbleSort(arr));
-			
-		}
-		
-		
+	    
+	   
+	    
 		//ternary search
 		
-		
-		
+	    ternary(size2,size1,sekunden);
 		
 		
 	}// end main
