@@ -130,7 +130,7 @@ public class BubbleSortSuche {
 		int size1 = size / 2;
 		int size2 = size1 / 2;
 	
-	    //int arrSize = size1 - size2;
+	    
 		
 	    
 	   
