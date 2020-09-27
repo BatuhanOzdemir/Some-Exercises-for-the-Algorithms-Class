@@ -13,9 +13,9 @@ public class InsertionSort {
 	
 	
 	public static void auf(int []  array) {
-		int num = 0;
-		for(int i = 0; i < array.length;i++) {
-			array[i] = num+1;
+		array[0] = 1;
+		for(int i = 1; i < array.length;i++) {
+			array[i] = array[i-1]+1;
 		}
 	}
 	
