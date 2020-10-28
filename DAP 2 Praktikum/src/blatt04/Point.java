@@ -33,7 +33,8 @@ public  boolean equals(Point p) {
 	}
 	
 	public double get(int i) {
-		return this.arr[i-1];
+		return this.arr[i];
 	}
+	
 	
 }
