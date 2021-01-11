@@ -24,8 +24,8 @@ public class PointsGenerator {
 		
 		Random random = new Random();
 		for(int i = 0; i < listSize; i++) {
-			double xCoordinate = random.nextDouble();
-			double yCoordinate = random.nextDouble();
+			double xCoordinate = (untereGrenze+(obereGrenze - untereGrenze))*random.nextDouble();
+			double yCoordinate = (untereGrenze+(obereGrenze - untereGrenze))*random.nextDouble();
 			Point point = new Point(xCoordinate,yCoordinate);
 			points.add(point);
 		}

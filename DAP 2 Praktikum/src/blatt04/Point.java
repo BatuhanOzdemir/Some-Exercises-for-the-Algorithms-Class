@@ -1,6 +1,8 @@
 package blatt04;
 
-public class Point {
+import java.util.Comparator;
+
+public class Point implements Comparable<Point>{
 
 	double[] arr;
 	
@@ -27,7 +29,7 @@ public  boolean equals(Point p) {
 	     String b = "";
 	     for(double p:this.arr) {
 	    	 a = Double.toString(p);
-	    	 b = b+a+" ";
+	    	 b = b+a+"; ";
 	     }
 	     return b;
 	}
@@ -36,5 +38,16 @@ public  boolean equals(Point p) {
 		return this.arr[i];
 	}
 	
+
+
+
+
+
+	@Override
+	public int compareTo(Point arg0) {
 	
+		return this.get(0) > arg0.get(0) ? 1:this.get(0) < arg0.get(0) ? -1:0;
+	}
+	
+  
 }

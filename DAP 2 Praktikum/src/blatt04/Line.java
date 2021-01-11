@@ -15,11 +15,12 @@ public class Line {
 		//Wir werden die determinante finden und wir nehmen an, dass die startPunkt ist die Ursprung
 		
 		double determinante = (endPoint.arr[0] - startPoint.arr[0])*(p3.arr[1] - startPoint.arr[1]) - (p3.arr[0]-startPoint.arr[0] )*(endPoint.arr[1]-startPoint.arr[1]);
-		
+		//left
 		if(determinante > 0) {
-			return 1;
-		}else if(determinante < 0) {
 			return -1;
+		}  //right
+		else if(determinante < 0) {
+			return 1;
 		}else {
 			return 0;
 		}
